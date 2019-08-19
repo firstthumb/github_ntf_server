@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package com.ekocaman.githubntf;
+option go_package = "githubntf";
+
+service Github {
+  rpc SearchRepository(SearchRequest) returns (SearchResponse);
+}
+
+message SearchRequest {
+  string query = 1;
+}
+
+message SearchResponse {
+  repeated Result results = 1;
+}
+
+message Result {
+  string name = 1;
+}

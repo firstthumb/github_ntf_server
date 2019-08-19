@@ -1,0 +1,14 @@
+# Refer to https://gqlgen.com/config/
+# for detailed .gqlgen.yml documentation.
+
+schema:
+- graphql/*.graphql
+exec:
+  filename: app/generated.go
+model:
+  filename: models_gen.go
+# resolver:
+#   filename: resolver.go
+#   type: Resolver
+autobind:
+  - githubntf/app/entity
