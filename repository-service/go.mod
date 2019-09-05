@@ -4,6 +4,7 @@ go 1.12
 
 require (
 	github.com/99designs/gqlgen v0.9.1
+	github.com/GoogleCloudPlatform/berglas v0.2.0
 	github.com/go-stack/stack v1.8.0 // indirect
 	github.com/golang/protobuf v1.3.2
 	github.com/golang/snappy v0.0.1 // indirect

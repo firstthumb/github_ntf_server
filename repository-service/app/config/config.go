@@ -1,7 +1,9 @@
 package config
 
 import (
+	"context"
 	"fmt"
+	"github.com/GoogleCloudPlatform/berglas/pkg/berglas"
 	"github.com/kelseyhightower/envconfig"
 	"gopkg.in/yaml.v2"
 	"os"
@@ -9,12 +11,9 @@ import (
 )
 
 type Config struct {
-	Database struct {
-		MongoURL      string `yaml:"mongo_url" envconfig:"DB_HOST"`
-		MongoUser     string `yaml:"mongo_username" envconfig:"DB_USERNAME"`
-		MongoPassword string `yaml:"mongo_password" envconfig:"DB_PASSWORD"`
-		DbName        string `yaml:"mongo_db_name" envconfig:"DB_NAME"`
-	} `yaml:"database"`
+	Secret struct {
+		DB string `yaml:"db" envconfig:"DB"`
+	} `yaml:"secret"`
 }
 
 func NewConfig() *Config {
@@ -64,4 +63,25 @@ func readEnv(cfg *Config) {
 	if err != nil {
 		processError(err)
 	}
+}
+
+func GetSecret(obj string) (string, error) {
+	// Check environment variables
+	val, exists := os.LookupEnv(obj)
+	if exists {
+		return val, nil
+	}
+
+	// Fetch from Google KMS
+	ctx := context.Background()
+
+	resp, err := berglas.Access(ctx, &berglas.AccessRequest{
+		Bucket: "github-ntf-secrets",
+		Object: obj,
+	})
+	if err != nil {
+		return "", err
+	}
+
+	return string(resp), nil
 }

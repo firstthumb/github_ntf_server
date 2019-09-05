@@ -23,24 +23,29 @@ type MongoRepository struct {
 }
 
 func NewMongoRepository(c *config.Config) *MongoRepository {
-	client, err := mongo.NewClient(options.Client().ApplyURI(c.Database.MongoURL))
+	mongoUrl, err := config.GetSecret(c.Secret.DB)
+	if err != nil {
+		log.Fatal("Couldn't fetch mongo secret: %v", err)
+		return nil
+	}
+	client, err := mongo.NewClient(options.Client().ApplyURI(mongoUrl))
 
 	if err != nil {
-		log.Printf("Couldn't connect to mongo: %v", err)
+		log.Fatal("Couldn't connect to mongo: %v", err)
 		return nil
 	}
 
 	err = client.Connect(context.Background())
 	if err != nil {
-		log.Printf("Mongo client couldn't connect with background context: %v", err)
+		log.Fatal("Mongo client couldn't connect with background context: %v", err)
 		return nil
 	}
 
 	log.Println("Connected to database...")
 
 	return &MongoRepository{
-		pool: client.Database(c.Database.DbName),
-		db:   c.Database.DbName,
+		pool: client.Database("test"),
+		db:   "test",
 	}
 }
 
