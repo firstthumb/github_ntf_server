@@ -4,6 +4,7 @@ import (
 	"github.com/99designs/gqlgen/handler"
 	"githubntf/app"
 	"githubntf/app/config/wire"
+	"githubntf/app/middleware"
 	pb "githubntf/proto"
 	"net/http"
 )
@@ -23,13 +24,13 @@ func (s *HttpServer) NewMux() *http.ServeMux {
 	mux := http.NewServeMux()
 
 	mux.Handle("/", handler.Playground("GraphQL playground", "/query"))
-	mux.Handle("/query", handler.GraphQL(
+	mux.Handle("/query", middleware.CORS(handler.GraphQL(
 		app.NewExecutableSchema(
 			app.Config{
 				Resolvers: r,
 			},
 		),
-	))
+	)))
 	mux.Handle(twirpHandler.PathPrefix(), twirpHandler)
 
 	return mux
