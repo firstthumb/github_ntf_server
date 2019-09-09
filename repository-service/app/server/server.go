@@ -4,7 +4,7 @@ import (
 	"github.com/99designs/gqlgen/handler"
 	"githubntf/app"
 	"githubntf/app/config/wire"
-	"githubntf/app/middleware"
+	"githubntf/common/middleware"
 	pb "githubntf/proto"
 	"net/http"
 )

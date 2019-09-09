@@ -5,6 +5,7 @@ import (
 	"errors"
 	"githubntf/app/config"
 	"githubntf/app/entity"
+	common "githubntf/common/config"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -23,7 +24,7 @@ type MongoRepository struct {
 }
 
 func NewMongoRepository(c *config.Config) *MongoRepository {
-	mongoUrl, err := config.GetSecret(c.Secret.DB)
+	mongoUrl, err := common.GetSecret(c.Secret.DB)
 	if err != nil {
 		log.Fatal("Couldn't fetch mongo secret: %v", err)
 		return nil

@@ -16,6 +16,9 @@ require (
 	github.com/vektah/gqlparser v1.1.2
 	github.com/xdg/scram v0.0.0-20180814205039-7eeb5667e42c // indirect
 	github.com/xdg/stringprep v1.0.0 // indirect
+	githubntf/common v0.0.0
 	go.mongodb.org/mongo-driver v1.0.4
 	gopkg.in/yaml.v2 v2.2.2
 )
+
+replace githubntf/common => ../common

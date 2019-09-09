@@ -33,8 +33,23 @@ func (r *repoGateway) Search(query string) ([]*entity.Repo, error) {
 
 	repos := make([]*entity.Repo, len(result.Repositories))
 	for index, rp := range result.Repositories {
+		var language = ""
+		if rp.Language != nil {
+			language = *rp.Language
+		}
+		var description = ""
+		if rp.Description != nil {
+			description = *rp.Description
+		}
+
 		repos[index] = &entity.Repo{
-			Name: *rp.Name,
+			RepoId:      *rp.ID,
+			Name:        *rp.Name,
+			Owner:       *rp.Owner.Login,
+			OwnerId:     *rp.Owner.ID,
+			Description: description,
+			Language:    language,
+			CreatedAt:   rp.GetCreatedAt().UTC(),
 		}
 	}
 
