@@ -5,7 +5,7 @@ import (
 	"githubntf/app"
 	"githubntf/app/config/wire"
 	"githubntf/common/middleware"
-	pb "githubntf/proto"
+	pb "githubntf/repository-service-proto/rpc/repository"
 	"net/http"
 )
 

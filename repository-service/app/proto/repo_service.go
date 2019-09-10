@@ -4,7 +4,7 @@ import (
 	"context"
 	"github.com/twitchtv/twirp"
 	"githubntf/app/service"
-	pb "githubntf/proto"
+	pb "githubntf/repository-service-proto/rpc/repository"
 	"log"
 )
 
