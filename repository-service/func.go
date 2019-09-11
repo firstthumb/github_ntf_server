@@ -1,7 +1,7 @@
 package githubntf
 
 import (
-	"githubntf/app/server"
+	"githubntf/repository-service/app/server"
 	"net/http"
 )
 

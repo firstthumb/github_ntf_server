@@ -1,2 +1,4 @@
+client:
+  repositoryService: "https://us-central1-mainproject-226019.cloudfunctions.net/RepositoryService"
 secret:
   db: mongourl

@@ -11,4 +11,4 @@ model:
 #   filename: resolver.go
 #   type: Resolver
 autobind:
-  - githubntf/app/entity
+  - githubntf/repository-service/app/entity

@@ -6,7 +6,7 @@ import (
 	"bytes"
 	"context"
 	"errors"
-	"githubntf/app/entity"
+	"githubntf/repository-service/app/entity"
 	"strconv"
 	"sync"
 	"sync/atomic"
@@ -345,7 +345,7 @@ func (ec *executionContext) _Query_repo(ctx context.Context, field graphql.Colle
 	res := resTmp.(*entity.Repo)
 	rctx.Result = res
 	ctx = ec.Tracer.StartFieldChildExecution(ctx)
-	return ec.marshalORepo2ᚖgithubntfᚋappᚋentityᚐRepo(ctx, field.Selections, res)
+	return ec.marshalORepo2ᚖgithubntfᚋrepositoryᚑserviceᚋappᚋentityᚐRepo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Query_repositories(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -389,7 +389,7 @@ func (ec *executionContext) _Query_repositories(ctx context.Context, field graph
 	res := resTmp.([]*entity.Repo)
 	rctx.Result = res
 	ctx = ec.Tracer.StartFieldChildExecution(ctx)
-	return ec.marshalNRepo2ᚕᚖgithubntfᚋappᚋentityᚐRepo(ctx, field.Selections, res)
+	return ec.marshalNRepo2ᚕᚖgithubntfᚋrepositoryᚑserviceᚋappᚋentityᚐRepo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Query___type(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -2316,11 +2316,11 @@ func (ec *executionContext) marshalNInt2int64(ctx context.Context, sel ast.Selec
 	return res
 }
 
-func (ec *executionContext) marshalNRepo2githubntfᚋappᚋentityᚐRepo(ctx context.Context, sel ast.SelectionSet, v entity.Repo) graphql.Marshaler {
+func (ec *executionContext) marshalNRepo2githubntfᚋrepositoryᚑserviceᚋappᚋentityᚐRepo(ctx context.Context, sel ast.SelectionSet, v entity.Repo) graphql.Marshaler {
 	return ec._Repo(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNRepo2ᚕᚖgithubntfᚋappᚋentityᚐRepo(ctx context.Context, sel ast.SelectionSet, v []*entity.Repo) graphql.Marshaler {
+func (ec *executionContext) marshalNRepo2ᚕᚖgithubntfᚋrepositoryᚑserviceᚋappᚋentityᚐRepo(ctx context.Context, sel ast.SelectionSet, v []*entity.Repo) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -2344,7 +2344,7 @@ func (ec *executionContext) marshalNRepo2ᚕᚖgithubntfᚋappᚋentityᚐRepo(c
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNRepo2ᚖgithubntfᚋappᚋentityᚐRepo(ctx, sel, v[i])
+			ret[i] = ec.marshalNRepo2ᚖgithubntfᚋrepositoryᚑserviceᚋappᚋentityᚐRepo(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -2357,7 +2357,7 @@ func (ec *executionContext) marshalNRepo2ᚕᚖgithubntfᚋappᚋentityᚐRepo(c
 	return ret
 }
 
-func (ec *executionContext) marshalNRepo2ᚖgithubntfᚋappᚋentityᚐRepo(ctx context.Context, sel ast.SelectionSet, v *entity.Repo) graphql.Marshaler {
+func (ec *executionContext) marshalNRepo2ᚖgithubntfᚋrepositoryᚑserviceᚋappᚋentityᚐRepo(ctx context.Context, sel ast.SelectionSet, v *entity.Repo) graphql.Marshaler {
 	if v == nil {
 		if !ec.HasError(graphql.GetResolverContext(ctx)) {
 			ec.Errorf(ctx, "must not be null")
@@ -2653,11 +2653,11 @@ func (ec *executionContext) marshalOID2ᚖstring(ctx context.Context, sel ast.Se
 	return ec.marshalOID2string(ctx, sel, *v)
 }
 
-func (ec *executionContext) marshalORepo2githubntfᚋappᚋentityᚐRepo(ctx context.Context, sel ast.SelectionSet, v entity.Repo) graphql.Marshaler {
+func (ec *executionContext) marshalORepo2githubntfᚋrepositoryᚑserviceᚋappᚋentityᚐRepo(ctx context.Context, sel ast.SelectionSet, v entity.Repo) graphql.Marshaler {
 	return ec._Repo(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalORepo2ᚖgithubntfᚋappᚋentityᚐRepo(ctx context.Context, sel ast.SelectionSet, v *entity.Repo) graphql.Marshaler {
+func (ec *executionContext) marshalORepo2ᚖgithubntfᚋrepositoryᚑserviceᚋappᚋentityᚐRepo(ctx context.Context, sel ast.SelectionSet, v *entity.Repo) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}

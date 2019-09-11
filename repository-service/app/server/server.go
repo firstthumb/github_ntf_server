@@ -2,10 +2,10 @@ package server
 
 import (
 	"github.com/99designs/gqlgen/handler"
-	"githubntf/app"
-	"githubntf/app/config/wire"
 	"githubntf/common/middleware"
-	pb "githubntf/proto"
+	pb "githubntf/repository-service-proto/rpc/repository"
+	"githubntf/repository-service/app"
+	"githubntf/repository-service/app/config/wire"
 	"net/http"
 )
 

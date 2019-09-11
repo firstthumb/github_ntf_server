@@ -7,12 +7,13 @@ package wire
 
 import (
 	"github.com/google/wire"
-	"githubntf/app/config"
-	"githubntf/app/proto"
-	"githubntf/app/repository/gateway"
-	"githubntf/app/repository/repo"
-	"githubntf/app/repository/resolver"
-	"githubntf/app/service"
+	"githubntf/common/client"
+	"githubntf/common/config"
+	"githubntf/repository-service/app/proto"
+	"githubntf/repository-service/app/repository/gateway"
+	"githubntf/repository-service/app/repository/repo"
+	"githubntf/repository-service/app/repository/resolver"
+	"githubntf/repository-service/app/service"
 )
 
 // Injectors from container.go:
@@ -20,8 +21,8 @@ import (
 func NewRepoService() *resolver.Resolver {
 	repoRepository := gateway.NewRepoGateway()
 	configConfig := config.NewConfig()
-	repoMongoRepository := repo.NewMongoRepository(configConfig)
-	repoService := service.NewRepoService(repoRepository, repoMongoRepository)
+	mongoRepository := repo.NewMongoRepository(configConfig)
+	repoService := service.NewRepoService(repoRepository, mongoRepository)
 	resolverResolver := resolver.NewResolver(repoService)
 	return resolverResolver
 }
@@ -29,14 +30,12 @@ func NewRepoService() *resolver.Resolver {
 func NewProtoService() *proto.Server {
 	repoRepository := gateway.NewRepoGateway()
 	configConfig := config.NewConfig()
-	repoMongoRepository := repo.NewMongoRepository(configConfig)
-	repoService := service.NewRepoService(repoRepository, repoMongoRepository)
+	mongoRepository := repo.NewMongoRepository(configConfig)
+	repoService := service.NewRepoService(repoRepository, mongoRepository)
 	server := proto.NewProtoServer(repoService)
 	return server
 }
 
 // container.go:
 
-var mongoRepository = repo.NewMongoRepository
-
-var InjectorSet = wire.NewSet(config.NewConfig, gateway.NewRepoGateway, mongoRepository, service.NewRepoService, resolver.NewResolver, proto.NewProtoServer)
+var InjectorSet = wire.NewSet(config.NewConfig, gateway.NewRepoGateway, repo.NewMongoRepository, service.NewRepoService, resolver.NewResolver, proto.NewProtoServer, client.NewRepositoryServiceClient)
