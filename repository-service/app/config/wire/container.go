@@ -4,12 +4,13 @@ package wire
 
 import (
 	"github.com/google/wire"
-	"githubntf/app/config"
 	"githubntf/app/proto"
 	"githubntf/app/repository/gateway"
 	"githubntf/app/repository/repo"
 	"githubntf/app/repository/resolver"
 	"githubntf/app/service"
+	"githubntf/common/client"
+	"githubntf/common/config"
 )
 
 var InjectorSet = wire.NewSet(
@@ -19,6 +20,7 @@ var InjectorSet = wire.NewSet(
 	service.NewRepoService,
 	resolver.NewResolver,
 	proto.NewProtoServer,
+	client.NewRepositoryServiceClient,
 )
 
 func NewRepoService() *resolver.Resolver {

@@ -3,8 +3,8 @@ package repo
 import (
 	"context"
 	"errors"
-	"githubntf/app/config"
 	"githubntf/app/entity"
+	"githubntf/common/config"
 	common "githubntf/common/config"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
