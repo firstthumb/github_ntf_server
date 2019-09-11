@@ -3,9 +3,9 @@ package repo
 import (
 	"context"
 	"errors"
-	"githubntf/app/entity"
 	"githubntf/common/config"
 	common "githubntf/common/config"
+	"githubntf/repository-service/app/entity"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"

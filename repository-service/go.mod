@@ -1,4 +1,4 @@
-module githubntf
+module githubntf/repository-service
 
 go 1.12
 

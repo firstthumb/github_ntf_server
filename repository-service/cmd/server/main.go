@@ -1,7 +1,7 @@
 package main
 
 import (
-	"githubntf/app/server"
+	"githubntf/repository-service/app/server"
 	"log"
 	"net/http"
 	"os"

@@ -2,7 +2,7 @@ package resolver
 
 import (
 	"context"
-	"githubntf/app/entity"
+	"githubntf/repository-service/app/entity"
 	"strconv"
 )
 

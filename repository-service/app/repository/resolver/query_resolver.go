@@ -2,8 +2,8 @@ package resolver
 
 import (
 	"context"
-	"githubntf/app/entity"
-	"githubntf/app/service"
+	"githubntf/repository-service/app/entity"
+	"githubntf/repository-service/app/service"
 )
 
 type queryResolver struct {

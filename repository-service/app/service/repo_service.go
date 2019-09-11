@@ -1,9 +1,9 @@
 package service
 
 import (
-	"githubntf/app/entity"
-	"githubntf/app/repository"
-	"githubntf/app/repository/repo"
+	"githubntf/repository-service/app/entity"
+	"githubntf/repository-service/app/repository"
+	"githubntf/repository-service/app/repository/repo"
 	"log"
 )
 

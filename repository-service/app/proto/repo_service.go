@@ -3,8 +3,8 @@ package proto
 import (
 	"context"
 	"github.com/twitchtv/twirp"
-	"githubntf/app/service"
 	pb "githubntf/repository-service-proto/rpc/repository"
+	"githubntf/repository-service/app/service"
 	"log"
 )
 

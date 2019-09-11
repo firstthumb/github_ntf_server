@@ -1,6 +1,6 @@
 package repository
 
-import "githubntf/app/entity"
+import "githubntf/repository-service/app/entity"
 
 type RepoRepository interface {
 	Find(repoID string) (*entity.Repo, error)

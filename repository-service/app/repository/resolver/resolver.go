@@ -1,8 +1,8 @@
 package resolver
 
 import (
-	gqlgen_clean_architecture "githubntf/app"
-	"githubntf/app/service"
+	gqlgen_clean_architecture "githubntf/repository-service/app"
+	"githubntf/repository-service/app/service"
 )
 
 type Resolver struct {

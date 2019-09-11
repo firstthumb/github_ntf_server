@@ -4,13 +4,13 @@ package wire
 
 import (
 	"github.com/google/wire"
-	"githubntf/app/proto"
-	"githubntf/app/repository/gateway"
-	"githubntf/app/repository/repo"
-	"githubntf/app/repository/resolver"
-	"githubntf/app/service"
 	"githubntf/common/client"
 	"githubntf/common/config"
+	"githubntf/repository-service/app/proto"
+	"githubntf/repository-service/app/repository/gateway"
+	"githubntf/repository-service/app/repository/repo"
+	"githubntf/repository-service/app/repository/resolver"
+	"githubntf/repository-service/app/service"
 )
 
 var InjectorSet = wire.NewSet(

@@ -6,7 +6,7 @@ import (
 	"bytes"
 	"context"
 	"errors"
-	"githubntf/app/entity"
+	"githubntf/repository-service/app/entity"
 	"strconv"
 	"sync"
 	"sync/atomic"
